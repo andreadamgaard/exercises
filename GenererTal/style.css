@@ -1,0 +1,58 @@
+:root {
+  /* Colors */
+  --primary: #5d68ff;
+  --secondary: #b0a8de;
+  --third: #f3ecff;
+  --text: white;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--primary);
+  color: var(--text);
+  font-family: "gill sans";
+  padding: 50px;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+section {
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  border: 1px solid var(--third);
+  padding: 45px;
+  border-radius: 5px;
+  width: fit-content;
+}
+
+h1 {
+  font-size: 45px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+p {
+  font-size: 24px;
+}
+
+button {
+  font-size: 20px;
+  width: fit-content;
+}
+
+.bund {
+  display: flex;
+  gap: 28px;
+}
