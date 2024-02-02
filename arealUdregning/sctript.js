@@ -9,3 +9,6 @@ function udregnRektangelAreal(width, height) {
 function convertSquareMToSquareFt(m2, sq = 10.7639104) {
   return m2 * sq;
 }
+
+const arealToSquareft = convertSquareMToSquareFt(udregnRektangelAreal(12, 10));
+console.log(convertSquareMToSquareFt(number));
