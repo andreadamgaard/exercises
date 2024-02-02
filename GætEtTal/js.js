@@ -13,6 +13,7 @@ function generateRandomNum(maxValue) {
 let randNum = generateRandomNum(100);
 console.log(randNum);
 
+// Feedback på hvilket tal brugeren har valgt kontra det rigtige tal.
 function feedback(value, input) {
   if (value === input) {
     feedbackSlot.innerHTML = "Okaay, tillykke!! Du har gættet rigtigt!";
