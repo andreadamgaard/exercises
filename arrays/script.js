@@ -100,3 +100,14 @@ const arr3 = [...str];
 // Her splitter den på mellemrum. Så hvis du har sætninger der skal deles i hvert ord bruges det her.
 const arr4 = str.split(" ");
 console.log(arr4);
+
+//Converter et array til en string
+
+//Start med at have et array
+const arrayToString = ["hej", "med", "dig", "igen"];
+
+console.log(arrayToString);
+// Her kan vi se vores array
+
+console.log(arrayToString.toString());
+// Nu bliver det lavet om til en string hvor der står "hej,med,dig,igen"
