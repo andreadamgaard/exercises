@@ -9,4 +9,12 @@
 function greeting(firstName) {
   return `hello ${firstName}`;
 }
-// console.log(txt);
+
+const sayHi = greeting;
+//console.log(sayHi("Mona"));
+// sayHi og greeting peger på samme funktion.
+
+function congreet(firstName) {
+  console.log(`hello ${firstName}`);
+}
+setTimeout(congreet, 1000, "Ron");
