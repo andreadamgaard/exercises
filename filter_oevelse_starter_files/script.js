@@ -13,24 +13,57 @@ const vehicles = [
 
 const ulPointer = document.querySelector("ul");
 
-// // Filter der viser alle elektriske biler
-// function isElectric(vehicles) {
-//   if (vehicles.isElectric === true) {
-//   return vehicles;
-//   }
-// }
+// Filter der viser alle elektriske biler
+function isElectric(vehicle) {
+  if (vehicle.isElectric === true) {
+    return vehicle;
+  }
+}
 
-// const allElectricVehicles = vehicles.filter(isElectric);
-// showTheseVehicles(allElectricVehicles);
+const allElectricVehicles = vehicles.filter(isElectric);
+//showTheseVehicles(allElectricVehicles);
+
+//Kan også laves anderledes:
+const isElectric2 = vehicles.filter((vehicle) => vehicle.isElectric);
+//showTheseVehicles(isElectric2);
 
 // Filter der viser hvilke der har plads til to eller flere
-function isMoreThanTwo(vehicles) {
-  if (vehicles.passengers > 1) {
-    return vehicles;
+function isMoreThanTwo(vehicle) {
+  if (vehicle.passengers > 1) {
+    return vehicle;
   }
 }
 const allWithMoreThanTwo = vehicles.filter(isMoreThanTwo);
-showTheseVehicles(allWithMoreThanTwo);
+//showTheseVehicles(allWithMoreThanTwo);
+
+// Anden måde at skrive den på
+const isTwoseats = vehicles.filter((vehicle) => vehicle.passengers > 1);
+//showTheseVehicles(isTwoseats);
+
+// Filter viser alle elektiske transportmidler, der også er ejet af Jonas
+function electricJonas(vehicle) {
+  if (vehicle.isElectric && vehicle.ownedBy === "Jonas") {
+    return vehicle;
+  }
+}
+const allElectricJonas = vehicles.filter(electricJonas);
+//showTheseVehicles(allElectricJonas);
+
+// Anden måde at skrive den på
+const isElectricJonas = vehicles.filter((vehicle) => vehicle.isElectric && vehicle.ownedBy === "Jonas");
+//showTheseVehicles(isElectricJonas);
+
+function rugMoreThanOne(vehicle) {
+  if (vehicle.fuel === "Rugbrød" && vehicle.passengers > 1) {
+    return vehicle;
+  }
+}
+const allRugMoreThanOne = vehicles.filter(rugMoreThanOne);
+//showTheseVehicles(allRugMoreThanOne);
+
+// Anden måde at skrive den på
+const isAllRugMore = vehicles.filter((vehicle) => vehicle.fuel === "Rugbrød" && vehicle.passengers > 1);
+//showTheseVehicles(isAllRugMore);
 
 function showTheseVehicles(arr) {
   arr.forEach((each) => {
@@ -43,3 +76,26 @@ function showTheseVehicles(arr) {
     ulPointer.innerHTML += `<li>${each.isTandem}</li>`;
   });
 }
+
+function filterBtns(evt) {
+  if (evt.target.dataset.filter === "isElectric2") {
+    ulPointer.innerHTML = "";
+    showTheseVehicles(isElectric2);
+  } else if (evt.target.dataset.filter === "isTwoseats") {
+    ulPointer.innerHTML = "";
+    showTheseVehicles(isTwoseats);
+  } else if (evt.target.dataset.filter === "allElectricJonas") {
+    ulPointer.innerHTML = "";
+    showTheseVehicles(allElectricJonas);
+  } else if (evt.target.dataset.filter === "isAllRugMore") {
+    ulPointer.innerHTML = "";
+    showTheseVehicles(isAllRugMore);
+  } else {
+    ulPointer.innerHTML = "";
+    showTheseVehicles(vehicles);
+  }
+}
+
+document.querySelectorAll(".btns").forEach((btns) => {
+  btns.addEventListener("mousedown", filterBtns);
+});
