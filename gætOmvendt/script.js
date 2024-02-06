@@ -35,6 +35,15 @@ document.getElementById("high").addEventListener("click", () => {
   guessNumber();
 });
 
+// function tooLowOrHigh(evt){
+//   console.log(evt.target.id);
+//   if (evt.target.is === "lowNum"){
+//     lowNum = comGuess;
+//   } else {
+//     highNum = comGuess === "highNum"
+//   }
+// }
+
 // Ved rigtigt gæt klikker vi på korrekt
 document.getElementById("correct").addEventListener("click", () => {
   // Giver feedback og fortæller hvor mange gæt det tog
