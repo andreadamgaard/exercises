@@ -66,19 +66,23 @@ const isAllRugMore = vehicles.filter((vehicle) => vehicle.fuel === "Rugbrød" &&
 //showTheseVehicles(isAllRugMore);
 
 function showTheseVehicles(arr) {
+  //ændre vores innerHTML i ul punkterne og beholder li overskrifterne.
+  ulPointer.innerHTML = "<li><strong>Type</strong></li><li><strong>Fuel</strong></li><li><strong>Passengers</strong></li><li><strong>Stops</strong></li><li><strong>OwnedBy</strong></li><li><strong>Electric</strong></li><li><strong>Tandem</strong></li>";
   arr.forEach((each) => {
-    ulPointer.innerHTML += `<li>${each.type}</li>`;
-    ulPointer.innerHTML += `<li>${each.fuel}</li>`;
-    ulPointer.innerHTML += `<li>${each.passengers}</li>`;
-    ulPointer.innerHTML += `<li>${each.stops}</li>`;
-    ulPointer.innerHTML += `<li>${each.ownedBy}</li>`;
-    ulPointer.innerHTML += `<li>${each.isElectric}</li>`;
-    ulPointer.innerHTML += `<li>${each.isTandem}</li>`;
+    //?? "-" sætter alle undefined som hvad vi skriver inden i "" i vores tabel.
+    ulPointer.innerHTML += `<li>${each.type ?? "-"}</li>`;
+    ulPointer.innerHTML += `<li>${each.fuel ?? "-"}</li>`;
+    ulPointer.innerHTML += `<li>${each.passengers ?? "-"}</li>`;
+    ulPointer.innerHTML += `<li>${each.stops ?? "-"}</li>`;
+    ulPointer.innerHTML += `<li>${each.ownedBy ?? "-"}</li>`;
+    ulPointer.innerHTML += `<li>${each.isElectric === undefined ? "" : "X"}</li>`;
+    ulPointer.innerHTML += `<li>${each.isTandem === undefined ? "" : "X"}</li>`;
   });
 }
 
 function filterBtns(evt) {
   if (evt.target.dataset.filter === "isElectric2") {
+    //kan fjernes herfra når den er sat ind i function ovenover
     ulPointer.innerHTML = "";
     showTheseVehicles(isElectric2);
   } else if (evt.target.dataset.filter === "isTwoseats") {
