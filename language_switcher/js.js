@@ -1,7 +1,7 @@
 "use strict";
 
 const selectElement = document.querySelector(".ice-cream");
-const result = document.querySelector(".result");
+const result = document.(".result");
 
 const texts = {
   de: {

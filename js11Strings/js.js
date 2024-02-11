@@ -64,19 +64,19 @@
 // const firstName = fullName.substring(0, fullName.indexOf(" "));
 // //console.log(firstName);
 
-// function nameSplit(param1) {
-//   //splitter til første navn
-//   const firstName = param1.substring(0, param1.indexOf(" "));
-//   //Splitter til mellemnavn
-//   const middleName = param1.substring(param1.indexOf(" ") + 1, param1.lastIndexOf(" "));
-//   //Splitter til efternavn
-//   const lastName = param1.substring(param1.lastIndexOf(" ") + 1);
-//   //Se at den har gjort det rigtigt
-//   console.log("firstName", firstName, "middleName", middleName, "lastName", lastName);
-// }
-// //Test om du kan skifte navnet ud her og det stadigvæk passer
-// const navn2 = "Albus Percival Wulfric Brian Dumbledore";
-// console.log(nameSplit(navn2));
+function nameSplit(param1) {
+  //splitter til første navn
+  const firstName = param1.substring(0, param1.indexOf(" "));
+  //Splitter til mellemnavn
+  const middleName = param1.substring(param1.indexOf(" ") + 1, param1.lastIndexOf(" "));
+  //Splitter til efternavn
+  const lastName = param1.substring(param1.lastIndexOf(" ") + 1);
+  //Se at den har gjort det rigtigt
+  console.log("firstName", firstName, "middleName", middleName, "lastName", lastName);
+}
+//Test om du kan skifte navnet ud her og det stadigvæk passer
+const navn2 = "Albus Percival Wulfric Brian Dumbledore";
+console.log(nameSplit(navn2));
 
 const pName = "peter";
 
