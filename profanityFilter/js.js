@@ -4,26 +4,18 @@ const curseWords = [
   { bad: "marquee", good: "just don't" },
 ];
 
-let theText = document.querySelector("p");
+// let theText = document.querySelector("p");
 let btn = document.querySelector("button");
 let info = document.querySelector("h3");
 let ord;
 
-function checkWords() {
-  if (theText.textContent.includes(ord)) {
-    info.textContent = "Hov, du har ikke udskiftet alle ord...";
-  } else info.textContent = "Sådan, alle ord er udskiftet nu :D";
-}
+function checkWords() {}
 
-function opdateWords() {
-  curseWords.forEach((word) => {
-    if (word.bad && word.good) {
-      const replaceTxt = theText.textContent.replace(word.bad, word.good);
-      theText.textContent = replaceTxt;
-    } else {
-      ord = word.bad.substring();
-    }
+function updateWords() {
+  let theText = document.querySelector("p").textContent;
+  curseWords.forEach((wordObj) => {
+    theText = theText.replaceAll(wordObj.bad, wordObj.good);
   });
-  checkWords();
+  document.querySelector("p").textContent = theText;
 }
-btn.addEventListener("click", opdateWords);
+btn.addEventListener("click", updateWords);

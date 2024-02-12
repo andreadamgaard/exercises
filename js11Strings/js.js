@@ -76,9 +76,17 @@ function nameSplit(param1) {
 }
 //Test om du kan skifte navnet ud her og det stadigvæk passer
 const navn2 = "Albus Percival Wulfric Brian Dumbledore";
-console.log(nameSplit(navn2));
+//console.log(nameSplit(navn2));
 
-const pName = "peter";
+//En måde at splitte med split og dele på en anden måde.
+const nameArr = navn2.split(" ");
+const firstNameSplit = nameArr[0];
+const lastNameSplit = nameArr[nameArr.length - 1];
+// console.log("nameArr", nameArr);
+// console.log("firstNameSplit", firstNameSplit);
+// console.log("lastNameSplit", lastNameSplit);
 
-const thirdName = pName.toLowerCase();
-console.log(thirdName);
+//Ændre så, alle bogstaver er små, udover det 3 der er stort. (svar: baSsemand)
+const pName = "bAsseMaNd";
+const changesName = pName.slice(0, 2).toLowerCase() + pName[2].toUpperCase() + pName.slice(3).toLowerCase();
+console.log(changesName);
