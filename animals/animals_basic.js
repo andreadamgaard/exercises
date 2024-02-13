@@ -84,6 +84,32 @@ function filterList(evt) {
   }
 }
 
+function sort(sortBy) {
+  const sortedList = makeAnimalArr;
+  if (sortBy === "name") {
+    sortedList.sort(sortByName);
+    displayList(sortedList);
+  } else if (sortBy === "type") {
+    sortedList.sort(sortByType);
+    displayList(sortedList);
+  }
+}
+
+function sortByName(animalA, animalB) {
+  if (animalA.name < animalB.name) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+function sortByType(animalA, animalB) {
+  if (animalA.type < animalB.type) {
+    return -1;
+  } else {
+    return 1;
+  }
+}
+
 document.querySelectorAll("button").forEach((btns) => {
   btns.addEventListener("click", filterList);
 });
