@@ -11,11 +11,14 @@
 
 <body>
     <h1>Animals - basic</h1>
+    <button data-filter="cats" type="button">Only cats</button>
+    <button data-filter="dogs" type="button">Only dog</button>
+    <button data-filter="all" type="button">All</button>
     <ul>
-        <li>Name</li>
-        <li>Type</li>
-        <li>Desription</li>
-        <li>Age</li>
+        <li class="sort" data-sort="sortName"><strong>Name</strong></li>
+        <li class="sort" data-sort="sortType"><strong>Type</strong></li>
+        <li class="sort" data-sort="sortDesc"><strong>Desription</strong></li>
+        <li class="sort" data-sort="sortAge"><strong>Age</strong></li>
     </ul>
     <div id="list">
         <!-- animal template will be cloned and inserted here -->

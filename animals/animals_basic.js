@@ -4,10 +4,9 @@ window.addEventListener("DOMContentLoaded", start);
 
 let animals;
 let makeAnimalArr = [];
+let sorted;
 
 function start() {
-  console.log("ready");
-
   loadJSON();
 }
 
@@ -19,16 +18,16 @@ function loadJSON() {
 
       // when loaded, display the list
       makeObjects();
-      displayList();
+      displayList(makeAnimalArr);
     });
 }
 
-function displayList() {
+function displayList(parm) {
   // clear the list
   document.querySelector("#list").innerHTML = "";
 
   // build a new list
-  makeAnimalArr.forEach(displayAnimal);
+  parm.forEach(displayAnimal);
 }
 
 function displayAnimal(animal) {
@@ -49,24 +48,42 @@ function makeObjects() {
   animals.forEach((animal) => {
     //console.log(animal);
     const animalSplit = animal.fullname.split(" ");
-    // console.log(animalSplit);
-    const firstName = animalSplit[0];
-    // console.log(firstName);
-    const animalType = animalSplit[animalSplit.length - 1];
-    // console.log(animalType);
-    const animalAge = animal.age;
-    // console.log(animalAge);
-    const desc = animalSplit[animalSplit.length - 2];
-    // console.log(desc);
+    // // console.log(animalSplit);
+    // const firstName = animalSplit[0];
+    // // console.log(firstName);
+    // const animalType = animalSplit[animalSplit.length - 1];
+    // // console.log(animalType);
+    // const animalAge = animal.age;
+    // // console.log(animalAge);
+    // const desc = animalSplit[animalSplit.length - 2];
+    // // console.log(desc);
 
-    //Vi samler vores array
+    //Vi samler vores nye array
     let newAnimals = [];
-    newAnimals.name = firstName;
-    newAnimals.desc = desc;
-    newAnimals.type = animalType;
-    newAnimals.age = animalAge;
-    console.log(newAnimals);
-    //Vi pusher vores nye array
+    //ovenover kan skives ind i koden som herunder. Behøver ikke const
+    newAnimals.name = animalSplit[0];
+    newAnimals.desc = animalSplit[animalSplit.length - 2];
+    newAnimals.type = animalSplit[animalSplit.length - 1];
+    newAnimals.age = animal.age;
+    //console.log(newAnimals);
+    //Vi pusher vores nye array ud af function
     makeAnimalArr.push(newAnimals);
   });
 }
+
+function filterList(evt) {
+  if (evt.target.dataset.filter === "cats") {
+    sorted = makeAnimalArr.filter((animal) => animal.type === "cat");
+    displayList(sorted);
+  } else if (evt.target.dataset.filter === "dogs") {
+    sorted = makeAnimalArr.filter((animal) => animal.type === "dog");
+    displayList(sorted);
+  } else {
+    sorted = false;
+    displayList(makeAnimalArr);
+  }
+}
+
+document.querySelectorAll("button").forEach((btns) => {
+  btns.addEventListener("click", filterList);
+});
