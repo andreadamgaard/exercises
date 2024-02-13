@@ -1,0 +1,28 @@
+[data-theme="dark"] {
+  --bg: #272727;
+  --footer: #fed766;
+  --header: #fed766;
+  --txt: #fed766;
+  --bgFooter: #100f0f;
+  --border: #fed766;
+  --links: #dcf763;
+}
+[data-theme="light"] {
+  --bg: #f7f9f9;
+  --footer: #725b4c;
+  --header: #725b4c;
+  --txt: #9f7e69;
+  --bgFooter: #e7decd;
+  --border: #a76d60;
+  --links: #d2bba0;
+}
+
+[data-theme="wild"] {
+  --bg: #f7edf0;
+  --footer: #f4afab;
+  --header: #f4afab;
+  --txt: #f4afab;
+  --bgFooter: #f4f482;
+  --border: #d9594c;
+  --links: #ff858d;
+}

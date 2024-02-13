@@ -19,3 +19,7 @@ function updateWords() {
   document.querySelector("p").textContent = theText;
 }
 btn.addEventListener("click", updateWords);
+
+function isItSafe() {
+  return;
+}

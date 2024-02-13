@@ -1,0 +1,47 @@
+body {
+  background-color: var(--bg);
+  color: var(--txt);
+  border: 1px solid var(--border);
+}
+
+header {
+  color: var(--header);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 2%;
+}
+header h1 {
+  font-size: 3rem;
+}
+
+header div {
+  display: grid;
+  text-align: center;
+  font-size: 1.5rem;
+}
+main {
+  padding: 2%;
+  border-bottom: 1px solid var(--border);
+}
+
+main h2 {
+  font-size: 2.5rem;
+}
+main p {
+  font-size: 1.5rem;
+}
+main a {
+  font-size: 1.5rem;
+  color: var(--links);
+}
+
+footer {
+  color: var(--footer);
+  background-color: var(--bgFooter);
+  padding: 2%;
+}
+
+footer h3 {
+  font-size: 2.5rem;
+}
