@@ -84,31 +84,36 @@ function filterList(evt) {
   }
 }
 
-function sort(sortBy) {
-  const sortedList = makeAnimalArr;
-  if (sortBy === "name") {
-    sortedList.sort(sortByName);
-    displayList(sortedList);
-  } else if (sortBy === "type") {
-    sortedList.sort(sortByType);
-    displayList(sortedList);
-  }
+// function sort(evt) {
+//   if (evt.target.dataset.sort === "sortName") {
+//     if (sorted) {
+//       //conditio ? if true: if false: giver en condition til kode.
+//       //Hvis A kommer før B = -1 A efter B = 1 A samme som B = 0
+//       const sortedName = sorted.sort((animalA, animalB) => (animalA < animalB ? -1 : 1));
+//       console.log(sortedName);
+//       displayList(sortedName);
+//     }
+//   }
+// }
+
+function sort(evt) {
+  makeAnimalArr.sort((animalA, animalB) => {
+    if (evt.currentTarget.dataset.sort === "sortName") {
+      return animalA.name.localeCompare(animalB.name);
+    } else if (evt.currentTarget.dataset.sort === "sortType") {
+      return animalA.type.localeCompare(animalB.type);
+    } else if (evt.currentTarget.dataset.sort === "sortDesc") {
+      return animalA.desc.localeCompare(animalB.desc);
+    } else if (evt.currentTarget.dataset.sort === "sortAge") {
+      return animalA.age - animalB.age;
+    }
+  });
+  displayList(makeAnimalArr);
 }
 
-function sortByName(animalA, animalB) {
-  if (animalA.name < animalB.name) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
-function sortByType(animalA, animalB) {
-  if (animalA.type < animalB.type) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
+document.querySelectorAll(".sort").forEach((li) => {
+  li.addEventListener("click", sort);
+});
 
 document.querySelectorAll("button").forEach((btns) => {
   btns.addEventListener("click", filterList);

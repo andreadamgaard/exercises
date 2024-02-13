@@ -47,9 +47,8 @@ function prepareObjects(jsonObject) {
   return animal;
 }
 function filterList() {
-  const filteredList = allAnimals.filter(isCat);
-
-  displayList(filteredList);
+  const filterList = allAnimals.filter(isCat);
+  displayList(filterList);
 }
 
 function isCat(animal) {
