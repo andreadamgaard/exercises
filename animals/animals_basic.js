@@ -59,7 +59,7 @@ function makeObjects() {
     // // console.log(desc);
 
     //Vi samler vores nye array
-    let newAnimals = [];
+    let newAnimals = {};
     //ovenover kan skives ind i koden som herunder. Behøver ikke const
     newAnimals.name = animalSplit[0];
     newAnimals.desc = animalSplit[animalSplit.length - 2];
@@ -69,6 +69,7 @@ function makeObjects() {
     //Vi pusher vores nye array ud af function
     makeAnimalArr.push(newAnimals);
   });
+  console.log(makeAnimalArr);
 }
 
 function filterList(evt) {
@@ -84,29 +85,32 @@ function filterList(evt) {
   }
 }
 
-// function sort(evt) {
-//   if (evt.target.dataset.sort === "sortName") {
-//     if (sorted) {
-//       //conditio ? if true: if false: giver en condition til kode.
-//       //Hvis A kommer før B = -1 A efter B = 1 A samme som B = 0
-//       const sortedName = sorted.sort((animalA, animalB) => (animalA < animalB ? -1 : 1));
-//       console.log(sortedName);
-//       displayList(sortedName);
-//     }
-//   }
-// }
-
 function sort(evt) {
+  const whatToSortOn = evt.currentTarget.dataset.sort;
+  let direction;
+  if (evt.currentTarget.dataset.sortorder === "asc") {
+    evt.currentTarget.dataset.sortorder = "desc";
+    direction = 1;
+  } else {
+    evt.currentTarget.dataset.sortorder = "asc";
+    direction = -1;
+  }
   makeAnimalArr.sort((animalA, animalB) => {
-    if (evt.currentTarget.dataset.sort === "sortName") {
-      return animalA.name.localeCompare(animalB.name);
-    } else if (evt.currentTarget.dataset.sort === "sortType") {
-      return animalA.type.localeCompare(animalB.type);
-    } else if (evt.currentTarget.dataset.sort === "sortDesc") {
-      return animalA.desc.localeCompare(animalB.desc);
-    } else if (evt.currentTarget.dataset.sort === "sortAge") {
-      return animalA.age - animalB.age;
+    if (animalA[whatToSortOn] < animalB[whatToSortOn]) {
+      return -1 * direction;
+    } else if (animalA[whatToSortOn] > animalB[whatToSortOn]) {
+      return 1 * direction;
     }
+
+    // if (evt.currentTarget.dataset.sort === "sortName") {
+    //   return animalA.name.localeCompare(animalB.name);
+    // } else if (evt.currentTarget.dataset.sort === "sortType") {
+    //   return animalA.type.localeCompare(animalB.type);
+    // } else if (evt.currentTarget.dataset.sort === "sortDesc") {
+    //   return animalA.desc.localeCompare(animalB.desc);
+    // } else if (evt.currentTarget.dataset.sort === "sortAge") {
+    //   return animalA.age - animalB.age;
+    // }
   });
   displayList(makeAnimalArr);
 }
