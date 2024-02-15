@@ -1,0 +1,4 @@
+body {
+  background: hsl(320, var(--x), var(--y));
+  height: 800px;
+}
