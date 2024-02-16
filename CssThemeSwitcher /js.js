@@ -1,7 +1,35 @@
 "use strict";
 
+const bodyElement = document.querySelector("body");
+const btn = document.querySelector("#chooseTheme");
+//const theTheme = (bodyElement.dataset.theme = evt);
+let themeChoice = localStorage.getItem("theme");
+bodyElement.dataset.theme = themeChoice;
+
 function theChange(evt) {
-  console.log("change", evt.target.value);
-  document.querySelector("body").dataset.theme = evt.target.value;
+  // bodyElement.dataset.theme = evt;
+  console.log(evt);
+  localStorage.setItem("theme", evt);
+
+  //Det her gør det samme som den udkommenterde
+  let themeChoice = localStorage.getItem("theme");
+  bodyElement.dataset.theme = themeChoice;
+
+  //Vi køre den samme If hver gang. Derfor kan vi gøre som ovenover
+  // let themeChoice = localStorage.getItem("theme");
+  // if (themeChoice === "dark") {
+  //   bodyElement.dataset.theme = themeChoice;
+  // } else if (themeChoice === "light") {
+  //   bodyElement.dataset.theme = themeChoice;
+  // } else {
+  //   bodyElement.dataset.theme = themeChoice;
+  // }
 }
-document.querySelector("#chooseTheme").addEventListener("mousedown", theChange);
+
+btn.addEventListener("change", (evt) => {
+  theChange(evt.target.value);
+});
+
+// Skifte tema
+
+//Gemmer værdien i localStorage

@@ -1,0 +1,37 @@
+.body {
+  height: 100px;
+}
+
+.outer {
+  position: relative;
+  width: 200px;
+  background-color: black;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+p {
+  color: white;
+  z-index: 10;
+}
+.inner {
+  transform-origin: 0;
+  position: absolute;
+  background-color: pink;
+  inset: 0;
+  scale: 0 1;
+}
+
+.ani {
+  animation-name: knappenMoves;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes knappenMoves {
+  100% {
+    scale: 1 1;
+  }
+}
