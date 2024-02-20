@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="js.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Lav din egen to-do liste</h1>
+    </header>
+    <main class="boksen">
+        <section id="makeNewToDo">
+            <h2>Hvad skal du huske? </h2>
+            <div>
+                <input type="text" name="" id="todoInput">
+                <button type="button">Tilføj til liste</button>
+            </div>
+        </section>
+        <template>
+            <li>
+                <p id="textInput">task</p>
+                <div>
+                    <header>status:</header>
+                    <button type="button" id="toDoBtn">Klik</button>
+                </div>
+            </li>
+        </template>
+
+        <section class="listerne">
+            <ul id="todoListen">
+            </ul>
+            <ul id="doneListen">
+            </ul>
+        </section>
+    </main>
+</body>
+
+</html>
