@@ -1,10 +1,19 @@
 //Skift til let når der kommer problemer
 let task_array = [];
 
+let toDoListTasks = JSON.parse(localStorage.getItem("arrayoftasks"));
+console.log("toDoListTasks", toDoListTasks);
+//Her sørger den for kun at hente fra localStorage hvis der er noget.
+//Er der ikke noget, prøver den ikke at hente fra localStorage.
+if (toDoListTasks !== null) {
+  task_array = toDoListTasks;
+  filterSortList();
+}
+
 document.querySelector("#makeNewToDo").addEventListener("click", newTask);
 
 function newTask(evt) {
-  console.log("klikket", evt.currentTarget.querySelector("#todoInput"));
+  //console.log("klikket", evt.currentTarget.querySelector("#todoInput"));
   if (evt.target.type === "button") {
     makeNewTask(evt.currentTarget.querySelector("#todoInput").value);
     //Her laver vi den til en tom string når vi har lavet input
@@ -21,18 +30,16 @@ function makeNewTask(name) {
 }
 
 function filterSortList() {
-  //indsæt filter og sortering her til done eller to do
-
+  //Her vi sørger for at vores task array bliver vist i dom.
+  //Hentet fra showList
   let listToShow;
-
-  //Sortereing of filtering
-
   listToShow = task_array;
   showList();
 }
 
 function showList() {
   //Få vores liste vist i DOM'en
+  console.log("taskArray", task_array);
   const tbodyToDo = document.querySelector("#todoListen");
   const tbodyDone = document.querySelector("#doneListen");
   //Husk at tømme den
@@ -44,6 +51,14 @@ function showList() {
     //Vitager fat i vores textfelt
     const tf = clone.querySelector("#textInput");
     tf.textContent = task.taskName;
+
+    //Tilføj delete button
+    const deleteBtn = clone.querySelector("#deleteBtn");
+    deleteBtn.addEventListener("click", () => {
+      removeTask(task.id);
+      filterSortList();
+    });
+
     if (task.done) {
       //Når vores task er true er den under done.
       clone.querySelector("#toDoBtn").textContent = "Done";
@@ -58,7 +73,7 @@ function showList() {
       //   task.taskName = tf.value;
       filterSortList();
     });
-
+    localStorage.setItem("arrayoftasks", JSON.stringify(task_array));
     //clone.querySelector("header").textContent = task.name;
     if (task.done) {
       tbodyDone.appendChild(clone);
@@ -66,4 +81,15 @@ function showList() {
       tbodyToDo.appendChild(clone);
     }
   });
+}
+
+function removeTask(taskId) {
+  const taskIndex = task_array.findIndex((task) => task.id === taskId);
+  if (taskIndex !== -1) {
+    //Her fjerner vi vores task fra vores task_array
+    task_array.splice(taskIndex, 1);
+    //Vi køre den igennem vores localStorage for at sikre os
+    //den forbliver fjernet når vi refresher vores side
+    localStorage.setItem("arrayoftasks", JSON.stringify(task_array));
+  }
 }
