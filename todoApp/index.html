@@ -20,6 +20,9 @@
                 <input type="text" name="" id="todoInput">
                 <button type="button">Tilføj til liste</button>
             </div>
+            <div id="item-counter">
+                <h3>Hvor mange opgaver mangler du: 0</h3>
+            </div>
         </section>
         <template>
             <li>
@@ -40,11 +43,15 @@
             </li>
         </template>
 
-        <section class="listerne">
-            <ul id="todoListen">
-            </ul>
-            <ul id="doneListen">
-            </ul>
+        <section class="listerne" id="deToLister">
+            <div class="kasse1">
+                <h2>Hvad skal du huske</h2>
+                <ul id="todoListen"></ul>
+            </div>
+            <div class="kasse2">
+                <h2>Hvad har du gjort</h2>
+                <ul id="doneListen"></ul>
+            </div>
         </section>
     </main>
 </body>
